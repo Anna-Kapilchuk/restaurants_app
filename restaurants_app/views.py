@@ -13,8 +13,8 @@ def get_restaurants(request):
     if 'name' in request.query_params:
         all_restaurants = all_restaurants.filter(name__iexact=request.query_params['name'])
 
-    # elif 'res_type' in request.query_params:
-    #     all_restaurants = all_restaurants.filter(res_type__iexact=request.query_params['res_type'])
+    if 'res_type' in request.query_params:
+        all_restaurants = all_restaurants.filter(res_type__iexact=request.query_params['res_type'])
 
     serializer = RestaurantSerializer(instance=all_restaurants, many=True)
     return Response(data=serializer.data)
