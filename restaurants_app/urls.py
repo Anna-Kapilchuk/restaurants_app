@@ -12,7 +12,7 @@ router.register('dishes', DishViewSet)
 router.register('restaurant-rating', RestaurantRatingViewSet)
 router.register('dishes-rating', DishRatingViewSet)
 router.register('address', AddressViewSet)
-print(router.urls)
+
 
 urlpatterns = [
     path('auth/login', TokenObtainPairView.as_view()),
