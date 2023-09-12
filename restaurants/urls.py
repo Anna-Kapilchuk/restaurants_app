@@ -19,5 +19,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/app/', include('restaurants_app.urls'))
+    path('api/auth/', include('restaurants_app.urls.auth')),
+    path('api/restaurants/', include('restaurants_app.urls.restaurants')),
+    path('api/dishes/', include('restaurants_app.urls.dishes')),
+    path('api/addresses/', include('restaurants_app.urls.address')),
+    path('api/restaurant-rating/', include('restaurants_app.urls.restaurant_rating')),
+    path('api/dish-rating/', include('restaurants_app.urls.dish_rating')),
 ]

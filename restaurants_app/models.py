@@ -25,7 +25,7 @@ class Restaurant(models.Model):
     instagram_url = models.URLField(max_length=512, null=True, blank=True)
     facebook = models.URLField(max_length=512, null=True, blank=True)
 
-    address = models.ForeignKey('Address', models.RESTRICT, null=True, blank=True)
+    address = models.ForeignKey('Address', on_delete=models.RESTRICT, null=True, blank=True)
 
     class Meta:
         db_table = 'restaurants'
@@ -38,11 +38,11 @@ class RestaurantDish(models.Model):
 
     name = models.CharField(null=False, blank=False, max_length=128)
     description = models.CharField(null=True, blank=True, max_length=256)
-    price = models.IntegerField(null=False, blank=False)         ### change to False
+    price = models.IntegerField(null=False, blank=False)
     dish_pic_url = models.URLField(max_length=512, db_column='pic_url', null=True, blank=True)
     dish_type = models.CharField(max_length=128, null=True, blank=True)
 
-    restaurant = models.ForeignKey('Restaurant', models.RESTRICT, null=False, blank=False)
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.RESTRICT, null=False, blank=False)
 
     class Meta:
         db_table = 'restaurant_dishes'
@@ -57,8 +57,8 @@ class RestaurantRating(models.Model):
                                       validators=[MinValueValidator(1), MaxValueValidator(10)])
     rating_date = models.DateField(null=False, blank=False, auto_now_add=True)
 
-    # created_by = models.ForeignKey(User)
-    restaurant = models.ForeignKey('Restaurant', models.RESTRICT, null=False, blank=False)
+    created_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.RESTRICT)
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.RESTRICT, null=False, blank=False)
 
     class Meta:
         db_table = 'restaurant_rating'
@@ -73,8 +73,8 @@ class DishRating(models.Model):
                                       validators=[MinValueValidator(1), MaxValueValidator(10)])
     rating_date = models.DateField(null=False, blank=False, auto_now_add=True)
 
-    # created_by = models.ForeignKey(User)
-    dish = models.ForeignKey('RestaurantDish', models.RESTRICT, null=False, blank=filter)
+    created_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.RESTRICT)
+    dish = models.ForeignKey('RestaurantDish', on_delete=models.RESTRICT, null=False, blank=filter)
 
     class Meta:
         db_table = 'dish_rating'
