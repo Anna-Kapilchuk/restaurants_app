@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
-    'restaurants_app.apps.RestaurantsAppConfig'
+    'restaurants_app.apps.RestaurantsAppConfig',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -145,5 +147,16 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=10),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=10),
 }
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     "http://127.0.0.1:3000",
+#     # "http://localhost:3001",
+#     # "http://192.168.1.135:3000",
+#     # "http://192.168.1.130:3000",
+#     # "http://192.168.1.129:3000"
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
+# APPEND_SLASH = False
 
 

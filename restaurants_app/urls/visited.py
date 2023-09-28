@@ -1,9 +1,9 @@
 
 from rest_framework.routers import DefaultRouter
-from restaurants_app.views.restaurants import RestaurantViewSet
+from restaurants_app.views.visited import VisitedViewSet
 
 router = DefaultRouter(trailing_slash=False)
-router.register('', RestaurantViewSet)
+router.register('', VisitedViewSet)
 
 
 urlpatterns = [
