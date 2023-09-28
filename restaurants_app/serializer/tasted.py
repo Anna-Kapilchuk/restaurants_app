@@ -7,5 +7,5 @@ class DetailedTastedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tasted
-        fields = ['dish', 'user', 'tasted_v', 'dish_rating']
+        fields = ['id', 'dish', 'user', 'tasted_v', 'dish_rating']
 

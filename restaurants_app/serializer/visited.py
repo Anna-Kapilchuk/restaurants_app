@@ -8,4 +8,4 @@ class DetailedVisitedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Visited
-        fields = ['restaurant_rating', "restaurant", 'user', 'visited_v']
+        fields = ['id', 'restaurant_rating', "restaurant", 'user', 'visited_v']
